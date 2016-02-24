@@ -43,6 +43,10 @@ h1 {
   font-size: 2em;
   height: 2.5em;
 }
+.spinner li {
+  margin: 0 20px;
+  line-height: 2.5em;
+}
 #first {
   width: 20%;
 }
@@ -53,14 +57,8 @@ h1 {
   width: 40%;
 }
 
-.spinner li {
-  margin: 0 20px;
-  line-height: 2.5em;
-}
-
-/* Override flipclock */
-.flip-clock-label {
-  display: none;
+#whats-possible {
+  /*display: none;*/
 }
 
 #buttons {
@@ -71,15 +69,22 @@ button {
   font-size: 1.5em;
   font-family: 'Poiret One';
   font-weight: normal;
-  margin-right: 20px;
+  margin: 20px;
   padding: 0.5em 0.8em;
   background: #333;
   color: #fcfbfa;
-  /*color: #ccc;*/
   border: 0;
   border-radius: 6px;
   transition: all 222ms linear;
 } button:hover {
   background: #39D184;
   cursor: pointer;
+} button[disabled="disabled"] {
+  background: #88D1AC;
+}
+
+
+/* Override flipclock */
+.flip-clock-label {
+  display: none;
 }
