@@ -1,0 +1,85 @@
+body {
+  margin: auto;
+  width: 80%;
+  color: #1e1d1c;
+  background: #fcfbfa;
+  font-family: 'Poiret One';
+}
+
+.heading h1 {
+  font-size: 90px;
+  font-weight: normal;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font-weight: normal;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-container > div {
+  margin: 1em;
+}
+
+.spinner-container {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+  margin: 20px 0 0 0;
+}
+.spinner {
+  position: relative;
+  float: left;
+  list-style: none;
+  padding: 0;
+  margin: 0;  
+  width: 33%;
+  font-size: 2em;
+  height: 2.5em;
+}
+#first {
+  width: 20%;
+}
+#second {
+  width: 40%;
+}
+#third {
+  width: 40%;
+}
+
+.spinner li {
+  margin: 0 20px;
+  line-height: 2.5em;
+}
+
+/* Override flipclock */
+.flip-clock-label {
+  display: none;
+}
+
+#buttons {
+  padding: 1em;
+  text-align: center;
+}
+button {
+  font-size: 1.5em;
+  font-family: 'Poiret One';
+  font-weight: normal;
+  margin-right: 20px;
+  padding: 0.5em 0.8em;
+  background: #333;
+  color: #fcfbfa;
+  /*color: #ccc;*/
+  border: 0;
+  border-radius: 6px;
+  transition: all 222ms linear;
+} button:hover {
+  background: #39D184;
+  cursor: pointer;
+}
