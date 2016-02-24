@@ -1,4 +1,4 @@
-peopleList = [
+participants = [
   'Ingrid',
   'Ailo',
   'Nikolai',
@@ -11,21 +11,20 @@ peopleList = [
   'Gaute',
   'Per-Dimitri',
   'Hans Henrik',
-  'Thomas'
-];
+  'Thomas'];
 
-speechList = [
+speechTopics = [
   'Gud',
   'Mamma',
   'Bananer',
-  'Trær'
-];
+  'Trær'];
 
-presentationList = [
+titles = [
+  "«E du inni mæ no?»",
+  "«Hei, svamp!»",
   '«Kondomet - pros & cons»',
   '«Baking og bolling»',
-  '«Øl. Nam.»'
-];
+  '«Øl. Nam.»'];
 
 var autoStopInterval = [4000, 7000];
 var speedInterval = [2, 4];
@@ -34,18 +33,23 @@ var accel = 11;
 var decel = 0.5;
 
 function populateList(listID, array) {
-  people = '';
+  content = '';
   
   $.each(array, function(k, v) {
-    people += '<li>'+v+'</li>'
+    content += '<li>'+v+'</li>'
   });
 
-  $( listID ).append( people )
+  $( listID ).append( content )
 }
 
 $(document).ready(function() {
-  // Populate first list with people
-  populateList( '#first', peopleList )
+  // Populate "show what's possible" lists
+  populateList( '#participants', participants )
+  populateList( '#speech-topics', speechTopics )
+  populateList( '#titles', titles )
+
+  // Populate first list with participants
+  populateList( '#first', participants )
 
   $('#first').bandit({
     speed: speedInterval,
@@ -58,7 +62,6 @@ $(document).ready(function() {
     spinOnLoad: false,
     done: function(text) {
       $( '#start-second' ).trigger( "click" );
-      // $( '#result' ).html(text);
     }
   });
 
@@ -73,18 +76,17 @@ $(document).ready(function() {
     spinOnLoad: false,
     done: function(text) {
       $('#third').empty();
-      if (text === 'beinkroker' || text === 'intervjuer') {
-        populateList( '#third', peopleList );
+      if (text === 'beinkroke med' || text === 'intervjue') {
+        populateList( '#third', participants );
       }
-      else if (text === 'gir et ektefølt kompliment til') {
-        populateList( '#third', peopleList );
-        // TODO add 'dypt inn i øynene og forteller et ektefølt kompliment'
+      else if (text === 'gi et ektefølt kompliment til') {
+        populateList( '#third', participants );
       }
-      else if (text === 'holder en tale om') {
-        populateList( '#third', speechList );
+      else if (text === 'holde en tale om') {
+        populateList( '#third', speechTopics );
       }
-      else if (text === 'holder foredraget') {
-        populateList( '#third', presentationList );
+      else if (text === 'holde foredraget' || text === 'fremføre sangen' || text === 'lese diktet') {
+        populateList( '#third', titles );
       }
       
       $('#start-third').trigger( "click" );
