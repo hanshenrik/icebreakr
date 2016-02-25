@@ -26,6 +26,20 @@ titles = [
   '«Baking og bolling»',
   '«Øl. Nam.»'];
 
+actions = [
+  'holde en tale om',
+  'holde foredraget',
+  'beinkroke med',
+  'bryter håndbakk med',
+  'se',
+  'fremføre sangen',
+  'lese diktet'];
+
+/* Actions suggestions:
+ *  intervjue,
+ *
+ */
+
 var autoStopInterval = [4000, 7000];
 var speedInterval = [2, 4];
 var delay = 0;
@@ -45,11 +59,13 @@ function populateList(listID, array) {
 $(document).ready(function() {
   // Populate "show what's possible" lists
   populateList( '#participants', participants )
+  populateList( '#actions', actions )
   populateList( '#speech-topics', speechTopics )
   populateList( '#titles', titles )
 
   // Populate first list with participants
   populateList( '#first', participants )
+  populateList( '#second', actions )
 
   $('#first').bandit({
     speed: speedInterval,
@@ -62,6 +78,7 @@ $(document).ready(function() {
     spinOnLoad: false,
     done: function(text) {
       $( '#start-second' ).trigger( "click" );
+      $('.special').slideUp();
     }
   });
 
@@ -76,11 +93,13 @@ $(document).ready(function() {
     spinOnLoad: false,
     done: function(text) {
       $('#third').empty();
+
       if (text === 'beinkroke med' || text === 'intervjue') {
         populateList( '#third', participants );
       }
-      else if (text === 'gi et ektefølt kompliment til') {
+      else if (text === 'se') {
         populateList( '#third', participants );
+        $( '#se-special' ).slideDown();
       }
       else if (text === 'holde en tale om') {
         populateList( '#third', speechTopics );

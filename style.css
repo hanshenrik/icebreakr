@@ -61,6 +61,10 @@ h1 {
   /*display: none;*/
 }
 
+.special {
+  display: none;
+}
+
 #buttons {
   padding: 1em;
   text-align: center;
