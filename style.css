@@ -12,7 +12,7 @@ body {
   text-align: center;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
   font-weight: normal;
 }
@@ -61,7 +61,7 @@ h1 {
   /*display: none;*/
 }
 
-.special {
+#special {
   display: none;
 }
 
@@ -85,6 +85,7 @@ button {
   cursor: pointer;
 } button[disabled="disabled"] {
   background: #88D1AC;
+  cursor: default;
 }
 
 

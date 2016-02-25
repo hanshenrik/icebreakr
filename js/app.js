@@ -30,7 +30,7 @@ actions = [
   'holde en tale om',
   'holde foredraget',
   'beinkroke med',
-  'bryter håndbakk med',
+  'bryte håndbakk med',
   'se',
   'fremføre sangen',
   'lese diktet'];
@@ -78,7 +78,7 @@ $(document).ready(function() {
     spinOnLoad: false,
     done: function(text) {
       $( '#start-second' ).trigger( "click" );
-      $('.special').slideUp();
+      $('#special').slideUp();
     }
   });
 
@@ -94,18 +94,21 @@ $(document).ready(function() {
     done: function(text) {
       $('#third').empty();
 
-      if (text === 'beinkroke med' || text === 'intervjue') {
+      if (text === 'beinkroke med' || text === 'bryte håndbakk med' || text === 'intervjue') {
         populateList( '#third', participants );
+        $( '#special > *' ).html('vinneren får en mojito ellerno..');
       }
       else if (text === 'se') {
         populateList( '#third', participants );
-        $( '#se-special' ).slideDown();
+        $( '#special > *' ).html('dypt inn i øynene og gi et ektefølt kompliment uten å le');
       }
       else if (text === 'holde en tale om') {
         populateList( '#third', speechTopics );
+        $( '#special > *' ).html('pling, pling, pling..');
       }
       else if (text === 'holde foredraget' || text === 'fremføre sangen' || text === 'lese diktet') {
         populateList( '#third', titles );
+        $( '#special > *' ).html('1, 2, 3, 4..');
       }
       
       $('#start-third').trigger( "click" );
@@ -122,6 +125,7 @@ $(document).ready(function() {
     stopButton: '#stop',
     spinOnLoad: false,
     done: function(text) {
+      $( '#special' ).slideDown();
     }
   });
 });
