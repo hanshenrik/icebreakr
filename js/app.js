@@ -1,46 +1,61 @@
 participants = [
+  'Kristoffer',
+  'Vilde',
   'Ingrid',
-  'Ailo',
-  'Nikolai',
-  'Lars Michael',
-  'Eirik',
+  'Hans Henrik',
   'Magnus',
   'Kari',
-  'Einar',
-  'Harald',
+  'Nicholas',
+  'Christian',
   'Gaute',
-  'Per-Dimitri',
-  'Hans Henrik',
   'Thomas'];
 
 speechTopics = [
-  'Gud',
-  'Mamma',
-  'Bananer',
-  'Trær'];
+  'sin kjærlighet til sopp',
+  'sin kjærlighet til fjernkontroller',
+  'mamma',
+  'bananer',
+  'måker',
+  'været',
+  'trær'];
 
 titles = [
+  '«Erna - våt, vill og vakker»',
   "«E du inni mæ no?»",
   "«Hei, svamp!»",
   '«Kondomet - pros & cons»',
   '«Baking og bolling»',
+  '«E du min i kveld, korvkiosken?»',
+  '«Tørst som faen»',
+  '«Blåbærrotte»',
+  '«Det blir godt i munnen når...»',
+  '«Diktet om agurken»',
+  '«Til kuken»',
   '«Øl. Nam.»'];
 
 actions = [
   'holde en tale om',
-  'holde foredraget',
-  'beinkroke med',
-  'bryte håndbakk med',
+  'parodiere',
+  'rævkroke med',
+  'tommelkrige med',
   'se',
+  // 'intervjue',
+  'holde foredraget',
   'fremføre sangen',
   'lese diktet'];
 
-/* Actions suggestions:
- *  intervjue,
- *
- */
+famousPeople = [
+  'Charter-Svein',
+  'Kongen',
+  'Eivind Hellstrøm',
+  'Aune Sand',
+  'Oslolosen',
+  'Asbjørn Brekke',
+  'Narvestad',
+  'Siv Jensen',
+  'Leif Juster'];
 
-var autoStopInterval = [4000, 7000];
+var autoStopInterval = [1000, 7000];
 var speedInterval = [2, 4];
 var delay = 0;
 var accel = 11;
@@ -54,6 +69,13 @@ function populateList(listID, array) {
   });
 
   $( listID ).append( content )
+}
+
+function getRemainingParticipants(firstParticipant) {
+  var remainingParticipants = participants.slice();
+  index = remainingParticipants.indexOf(firstParticipant);
+  remainingParticipants.splice(index, 1);
+  return remainingParticipants;
 }
 
 $(document).ready(function() {
@@ -94,23 +116,47 @@ $(document).ready(function() {
     done: function(text) {
       $('#third').empty();
 
-      if (text === 'beinkroke med' || text === 'bryte håndbakk med' || text === 'intervjue') {
-        populateList( '#third', participants );
-        $( '#special > *' ).html('vinneren får en mojito ellerno..');
+      var remainingParticipants;
+      var firstParticipant = $( '#first :first-child' ).text()
+
+      switch (text) {
+        case 'se':
+          remainingParticipants = getRemainingParticipants(firstParticipant);
+          populateList( '#third', remainingParticipants );
+          $( '#special > *' ).html('dypt inn i øynene og gi et ektefølt kompliment :)');
+          break;
+        case 'rævkroke med':
+          remainingParticipants = getRemainingParticipants(firstParticipant);
+          populateList( '#third', remainingParticipants );
+          $( '#special > *' ).html('dypt inn i øynene og gi et ektefølt kompliment :)');
+          break;
+        case 'tommelkrige med':
+          remainingParticipants = getRemainingParticipants(firstParticipant);
+          populateList( '#third', remainingParticipants );
+          $( '#special > *' ).html('vinneren får no greier');
+          break;
+        case 'holde en tale om':
+          populateList( '#third', speechTopics );
+          $( '#special > *' ).html('pling, pling, pling..');
+          break;
+        case 'lese diktet':
+          populateList( '#third', titles );
+          $( '#special > *' ).html('«og det er forfattararen sjalv som las»');
+          break;
+        case 'holde foredraget':
+          populateList( '#third', titles );
+          $( '#special > *' ).html('keep it short, stupid!');
+          break;
+        case 'fremføre sangen':
+          populateList( '#third', titles );
+          $( '#special > *' ).html('1, 2.. og 1, 2, 3, 4!');
+          break;
+        case 'parodiere':
+          populateList( '#third', famousPeople );
+          $( '#special > *' ).html('lykke til!');
+          break;
       }
-      else if (text === 'se') {
-        populateList( '#third', participants );
-        $( '#special > *' ).html('dypt inn i øynene og gi et ektefølt kompliment uten å le');
-      }
-      else if (text === 'holde en tale om') {
-        populateList( '#third', speechTopics );
-        $( '#special > *' ).html('pling, pling, pling..');
-      }
-      else if (text === 'holde foredraget' || text === 'fremføre sangen' || text === 'lese diktet') {
-        populateList( '#third', titles );
-        $( '#special > *' ).html('1, 2, 3, 4..');
-      }
-      
+
       $('#start-third').trigger( "click" );
     }
   });
