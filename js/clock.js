@@ -1,5 +1,5 @@
 // Specify number of seconds to countdown
-var countdown = 63;
+var countdown = 60*5;
 
 $(document).ready(function() {
   var clock = $('.clock').FlipClock(countdown, {
