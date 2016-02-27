@@ -128,7 +128,7 @@ $(document).ready(function() {
         case 'rævkroke med':
           remainingParticipants = getRemainingParticipants(firstParticipant);
           populateList( '#third', remainingParticipants );
-          $( '#special > *' ).html('dypt inn i øynene og gi et ektefølt kompliment :)');
+          $( '#special > *' ).html('vinneren får no greier');
           break;
         case 'tommelkrige med':
           remainingParticipants = getRemainingParticipants(firstParticipant);
