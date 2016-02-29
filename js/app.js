@@ -1,18 +1,21 @@
 participants = [
-  'Kristoffer',
-  'Vilde',
-  'Ingrid',
-  'Hans Henrik',
-  'Magnus',
-  'Kari',
-  'Nicholas',
-  'Christian',
-  'Gaute',
-  'Thomas'];
+  'John',
+  'Paul',
+  'George',
+  'Ringo'];
+
+actions = [
+  'holde en tale om',
+  'parodiere',
+  'rævkroke med',
+  'tommelkrige med',
+  'se',
+  'holde foredraget',
+  'fremføre sangen',
+  'lese diktet'];
 
 speechTopics = [
   'sin kjærlighet til sopp',
-  'sin kjærlighet til fjernkontroller',
   'mamma',
   'bananer',
   'måker',
@@ -21,39 +24,25 @@ speechTopics = [
 
 titles = [
   '«Erna - våt, vill og vakker»',
+  '«E du min i kveld, Jens?»',
   "«E du inni mæ no?»",
   "«Hei, svamp!»",
   '«Kondomet - pros & cons»',
   '«Baking og bolling»',
-  '«E du min i kveld, korvkiosken?»',
   '«Tørst som faen»',
   '«Blåbærrotte»',
-  '«Det blir godt i munnen når...»',
-  '«Diktet om agurken»',
+  '«Det blir godt i munnen når..»',
+  '«Agurken»',
   '«Til kuken»',
   '«Øl. Nam.»'];
 
-actions = [
-  'holde en tale om',
-  'parodiere',
-  'rævkroke med',
-  'tommelkrige med',
-  'se',
-  // 'intervjue',
-  'holde foredraget',
-  'fremføre sangen',
-  'lese diktet'];
-
 famousPeople = [
-  'Charter-Svein',
   'Kongen',
   'Eivind Hellstrøm',
-  'Aune Sand',
   'Oslolosen',
   'Asbjørn Brekke',
   'Narvestad',
-  'Siv Jensen',
-  'Leif Juster'];
+  'Siv Jensen'];
 
 var autoStopInterval = [1000, 7000];
 var speedInterval = [2, 4];
@@ -79,11 +68,16 @@ function getRemainingParticipants(firstParticipant) {
 }
 
 $(document).ready(function() {
+  $( '#settings-icon' ).click( function() {
+    $( '#settings-list').slideToggle();
+  })
+
   // Populate "show what's possible" lists
   populateList( '#participants', participants )
   populateList( '#actions', actions )
   populateList( '#speech-topics', speechTopics )
   populateList( '#titles', titles )
+  populateList( '#famous-people', famousPeople )
 
   // Populate first list with participants
   populateList( '#first', participants )
@@ -100,7 +94,7 @@ $(document).ready(function() {
     spinOnLoad: false,
     done: function(text) {
       $( '#start-second' ).trigger( "click" );
-      $('#special').slideUp();
+      $('#action-info').slideUp();
     }
   });
 
@@ -123,37 +117,37 @@ $(document).ready(function() {
         case 'se':
           remainingParticipants = getRemainingParticipants(firstParticipant);
           populateList( '#third', remainingParticipants );
-          $( '#special > *' ).html('dypt inn i øynene og gi et ektefølt kompliment :)');
+          $( '#action-info > *' ).html('dypt inn i øynene og gi et ektefølt kompliment :)');
           break;
         case 'rævkroke med':
           remainingParticipants = getRemainingParticipants(firstParticipant);
           populateList( '#third', remainingParticipants );
-          $( '#special > *' ).html('vinneren får no greier');
+          $( '#action-info > *' ).html('vinneren får no greier');
           break;
         case 'tommelkrige med':
           remainingParticipants = getRemainingParticipants(firstParticipant);
           populateList( '#third', remainingParticipants );
-          $( '#special > *' ).html('vinneren får no greier');
+          $( '#action-info > *' ).html('vinneren får no greier');
           break;
         case 'holde en tale om':
           populateList( '#third', speechTopics );
-          $( '#special > *' ).html('pling, pling, pling..');
+          $( '#action-info > *' ).html('pling, pling, pling..');
           break;
         case 'lese diktet':
           populateList( '#third', titles );
-          $( '#special > *' ).html('«og det er forfattararen sjalv som las»');
+          $( '#action-info > *' ).html('«og det er forfattararen sjalv som las»');
           break;
         case 'holde foredraget':
           populateList( '#third', titles );
-          $( '#special > *' ).html('keep it short, stupid!');
+          $( '#action-info > *' ).html('keep it short, stupid!');
           break;
         case 'fremføre sangen':
           populateList( '#third', titles );
-          $( '#special > *' ).html('1, 2.. og 1, 2, 3, 4!');
+          $( '#action-info > *' ).html('1, 2 og 1, 2, 3, 4!');
           break;
         case 'parodiere':
           populateList( '#third', famousPeople );
-          $( '#special > *' ).html('lykke til!');
+          $( '#action-info > *' ).html('lykke til!');
           break;
       }
 
@@ -171,7 +165,7 @@ $(document).ready(function() {
     stopButton: '#stop',
     spinOnLoad: false,
     done: function(text) {
-      $( '#special' ).slideDown();
+      $( '#action-info' ).slideDown();
     }
   });
 });
