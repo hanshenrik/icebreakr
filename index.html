@@ -21,23 +21,33 @@
     <div class="row">
       <div class="col-md-12">
         <div class="heading">
-          <h1>isbrytr</h1>
+          <h1><span class="glyphicon glyphicon-ice-lolly-tasted"></span> isbrytr</h1>
         </div>
       </div>
     </div>
 
+    <div id="settings">
+      <span id="settings-icon" class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+      <ul id="settings-list">
+        <li>
+          <input id="play-music" type="checkbox" /> spill noe classy musikk når klokka stopper
+        </li>
+      </ul>
+    </div>
+
     <div class="row">
       <div class="col-md-12">
-
-        <div class="flex-container">
           <div><h1>det blir smågøy og mye kleint om</h1></div>
-
-          <div class="clock-container">
-            <div class="clock"></div>
-          </div>
-        </div>
-
       </div>
+      <div class="col-md-12 flex-container">
+            <div class="clock"></div>
+      </div>
+        <!-- <div class="flex-container"> -->
+
+          <!-- <div class="clock-container">
+          </div> -->
+        <!-- </div> -->
+
     </div>
 
     <div class="row">
@@ -47,50 +57,66 @@
     </div>
 
     <div class="row">
-      <div class="col-md-12">
-        <div class="spinner-container">
-
+      <div class="col-md-4 spinner-container">
+        <!-- <div class="spinner-container"> -->
+        <!-- </div> -->
           <ul id="first" class="spinner"></ul>
-
+      </div>
+      <div class="col-md-4 spinner-container">
           <ul id="second" class="spinner"></ul>
-
+      </div>
+      <div class="col-md-4 spinner-container">
           <ul id="third" class="spinner"></ul>
-
-
-        </div>
-          <div id="special"><h2></h2></div>
       </div>
     </div>
 
-    <div id="buttons">
-      <button id="start-first">snurr 1</button>
-      <button id="start-second">snurr 2</button>
-      <button id="start-third">snurr 3</button>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="action-info"><h2></h2></div>
+      </div>
+    </div>
+
+    <div id="buttons" class="text-center">
+      <button id="start-first">snurr #1</button>
+      <button id="start-second">snurr #2</button>
+      <button id="start-third">snurr #3</button>
       <button id="stop">stopp</button>
     </div>
 
+    <div class="row text-center">
+      <div class="col-sm-6 col-sm-offset-3">
+        <iframe id="soundcloud-widget" width="100%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/42058637&amp;auto_play=false&amp;buying=false&amp;liking=false&amp;download=false&amp;sharing=false&amp;show_artwork=false&amp;show_playcount=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;"></iframe>
+      </div>
+    </div>
+
+
     <div id="whats-possible">
-      <div class="col-sm-3">
-        <h2>Deltakere</h2>
+      <div class="col-sm-6">
+        <h3>deltakere</h3>
         <ul id="participants"></ul>
       </div>
-      <div class="col-sm-3">
-        <h2>Handlinger</h2>
+      <div class="col-sm-6">
+        <h3>handlinger</h3>
         <ul id="actions"></ul>
       </div>
-      <div class="col-sm-3">
-        <h2>Emner til taler</h2>
+      <div class="col-sm-6">
+        <h3>emner til taler</h3>
         <ul id="speech-topics"></ul>
       </div>
-      <div class="col-sm-3">
-        <h2>Titler på sanger, dikt og foredrag</h2>
+      <div class="col-sm-6">
+        <h3>titler på sanger, dikt og foredrag</h3>
         <ul id="titles"></ul>
+      </div>
+      <div class="col-sm-6">
+        <h3>kjendiser</h3>
+        <ul id="famous-people"></ul>
       </div>
     </div>
   </div>
 
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js"></script>
+  <script type="text/javascript" src="js/soundcloud.min.js"></script>
   <script type="text/javascript" src="js/jquery.bandit.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
   <script type="text/javascript" src="js/clock.js"></script>

@@ -4,6 +4,7 @@ body {
   color: #1e1d1c;
   background: #fcfbfa;
   font-family: 'Poiret One';
+  font-size: 18px;
 }
 
 .heading h1 {
@@ -23,7 +24,7 @@ h1, h2 {
   align-items: center;
 }
 .flex-container > div {
-  margin: 1em;
+  width: auto;
 }
 
 .spinner-container {
@@ -35,50 +36,43 @@ h1, h2 {
 }
 .spinner {
   position: relative;
-  float: left;
+  text-align: center;
   list-style: none;
   padding: 0;
   margin: 0;  
-  width: 33%;
-  font-size: 2em;
+  font-size: 1.5em;
   height: 2.5em;
 }
 .spinner li {
-  margin: 0 20px;
   line-height: 2.5em;
-}
-#first {
-  width: 20%;
-}
-#second {
-  width: 40%;
-}
-#third {
-  width: 40%;
 }
 
 #whats-possible {
   /*display: none;*/
 }
+#whats-possible ul {
+  list-style-type: square;
+}
 
-#special {
+#action-info {
   display: none;
 }
 
 #buttons {
   padding: 1em;
-  text-align: center;
 }
 button {
-  font-size: 1.5em;
   font-family: 'Poiret One';
   font-weight: normal;
-  margin: 20px;
-  padding: 0.5em 0.8em;
+
+  margin: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 0;
+
   background: #333;
   color: #fcfbfa;
-  border: 0;
-  border-radius: 6px;
+
   transition: all 222ms linear;
 } button:hover {
   background: #39D184;
@@ -88,8 +82,24 @@ button {
   cursor: default;
 }
 
+#settings {
+}
+#settings-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 40px;
+  cursor: pointer;
+}
+#settings-list {
+  display: none;
+  list-style-type: none;
+}
 
 /* Override flipclock */
 .flip-clock-label {
   display: none;
+}
+.clock {
+  min-width: 300px;
 }
