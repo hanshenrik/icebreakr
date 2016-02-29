@@ -1,5 +1,5 @@
 // Specify number of seconds to countdown
-var countdown = 60*5;
+var countdown = 60*20;
 
 $( document ).ready( function() {
   var soundcloudWidget = SC.Widget( document.querySelector( '#soundcloud-widget' ) );
