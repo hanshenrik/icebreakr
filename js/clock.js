@@ -1,19 +1,22 @@
 // Specify number of seconds to countdown
 var countdown = 60*5;
 
-$(document).ready(function() {
-  var clock = $('.clock').FlipClock(countdown, {
+$( document ).ready( function() {
+  var soundcloudWidget = SC.Widget( document.querySelector( '#soundcloud-widget' ) );
+
+  var clock = $( '.clock' ).FlipClock( countdown, {
     clockFace: 'MinuteCounter',
     countdown: true,
     callbacks: {
       stop: function() {
-        setTimeout(function() {
-          $('.message').html('The clock has stopped!');
-          $('#start-first').trigger( "click" );
-          clock.setTime(countdown);
+        setTimeout( function() {
+          $( '#start-first' ).trigger( 'click' );
+          clock.setTime( countdown );
           clock.start();
-          // widget.play();
-        }, 2000);
+          if ( $( '#play-music' ).is( ':checked' ) ) {
+            soundcloudWidget.play();
+          }
+        }, 2000 );
       }
     }
   });
