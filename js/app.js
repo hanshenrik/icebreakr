@@ -1,8 +1,9 @@
 participants = [
-  'John',
-  'Paul',
-  'George',
-  'Ringo'];
+  'Ola',
+  'Kari',
+  'Odin',
+  'Tor',
+  'Frøya'];
 
 actions = [
   'holde en tale om',
@@ -70,7 +71,23 @@ function getRemainingParticipants(firstParticipant) {
 $(document).ready(function() {
   $( '#settings-icon' ).click( function() {
     $( '#settings-list').slideToggle();
-  })
+  });
+
+  $( '#play-music' ).click( function() {
+    $( '#soundcloud-widget').slideToggle();
+  });
+
+  // $( '#add-participant' ).keypress(function (e) {
+  //   var key = e.which;
+  //   var name = $( this ).val();
+  //   console.log(key)
+  //   console.log(name)
+  //   if (key === 13) {
+  //     console.log( "adding " +name )
+  //     participants.push( name );
+  //     return true;
+  //   }
+  // });
 
   // Populate "show what's possible" lists
   populateList( '#participants', participants )
@@ -83,7 +100,7 @@ $(document).ready(function() {
   populateList( '#first', participants )
   populateList( '#second', actions )
 
-  $('#first').bandit({
+  $( '#first' ).bandit({
     speed: speedInterval,
     delay: delay,
     accel: accel,
@@ -93,12 +110,12 @@ $(document).ready(function() {
     stopButton: '#stop',
     spinOnLoad: false,
     done: function(text) {
-      $( '#start-second' ).trigger( "click" );
-      $('#action-info').slideUp();
+      $( '#start-second' ).trigger( 'click' );
+      $( '#action-info' ).slideUp();
     }
   });
 
-  $('#second').bandit({
+  $( '#second' ).bandit({
     speed: speedInterval,
     delay: delay,
     accel: accel,
@@ -108,7 +125,7 @@ $(document).ready(function() {
     stopButton: '#stop',
     spinOnLoad: false,
     done: function(text) {
-      $('#third').empty();
+      $( '#third' ).empty();
 
       var remainingParticipants;
       var firstParticipant = $( '#first :first-child' ).text()
@@ -151,11 +168,11 @@ $(document).ready(function() {
           break;
       }
 
-      $('#start-third').trigger( "click" );
+      $( '#start-third' ).trigger( 'click' );
     }
   });
 
-  $('#third').bandit({
+  $( '#third' ).bandit({
     speed: speedInterval,
     delay: delay,
     accel: accel,
